@@ -10,18 +10,18 @@ namespace DomainDriven.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 { 
-    private readonly ICqrsAdapter _cqrsAdapter;
+    private readonly IDomainRequestAdapter _adapter;
     private readonly ILogger<WeatherForecastController> _logger;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger, ICqrsAdapter cqrsAdapter)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger, IDomainRequestAdapter adapter)
     {
         _logger = logger;
-        _cqrsAdapter = cqrsAdapter;
+        _adapter = adapter;
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
     public async Task<IEnumerable<WeatherForecast>> Get()
     {
-        return await _cqrsAdapter.SendAndGetAsync(new WeatherRequestQuery(5), CancellationToken.None);
+        return await _adapter.SendAndGetAsync(new WeatherQuery(5), CancellationToken.None);
     }
 }

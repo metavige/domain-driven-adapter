@@ -14,7 +14,7 @@ public static class DomainDrivenCoreExtension
         services.AddMediatR(Assembly.GetExecutingAssembly(), implementationAssembly); 
         
         // 使用一個 Adapter 當 MediatR 的中介者
-        services.TryAddTransient<ICqrsAdapter, CqrsAdapter>();
+        services.TryAddTransient<IDomainRequestAdapter, DomainRequestAdapter>();
         
         return services;
     }

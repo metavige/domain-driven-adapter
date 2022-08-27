@@ -4,12 +4,12 @@ using MediatR;
 namespace Domain.Driven;
 
 /// <summary>
-/// <see cref="IRequestCommand"/> 處理器
+/// <see cref="IDomainQuery{TResponse}"/> Handler
 /// </summary>
-/// <typeparam name="TRequestQuery"></typeparam>
+/// <typeparam name="TDomainQuery"></typeparam>
 /// <typeparam name="TResult"></typeparam>
-public interface IRequestQueryHandler<in TRequestQuery, TResult> : IRequestHandler<TRequestQuery, TResult>
-    where TRequestQuery : IRequestQuery<TResult>
+public interface IRequestQueryHandler<in TDomainQuery, TResult> : IRequestHandler<TDomainQuery, TResult>
+    where TDomainQuery : IDomainQuery<TResult>
 {
     
 }

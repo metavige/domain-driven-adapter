@@ -3,9 +3,9 @@ using MediatR;
 namespace Domain.Driven;
 
 /// <summary>
-/// Query 要求
+/// Query request, for ReadOnly Data
 /// </summary>
 /// <typeparam name="TResponse"></typeparam>
-public interface IRequestQuery<out TResponse> : IRequest<TResponse>
+public interface IDomainQuery<out TResponse> : IRequest<TResponse>
 {
 }

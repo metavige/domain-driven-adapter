@@ -3,7 +3,7 @@ using MediatR;
 namespace Domain.Driven;
 
 /// <summary>
-/// Domain 事件
+/// Domain Event
 /// </summary>
 public interface IDomainEvent : INotification
 {
